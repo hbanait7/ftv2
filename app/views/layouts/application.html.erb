@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Freshtomatoes</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<header id="header">
+
+  <span id="home_image"><%= link_to image_tag("tomato.jpg"), root_path %></span>
+  <span id="add_movie_link"><%= link_to 'Add Movie', new_movie_path %></span>
+  
+  <% if logged_in? %>
+    <span id="logout_link"><%= link_to 'Log Out', logout_path, method: :delete %></span>
+    <span id="profile_link"><%= link_to 'Profile', current_user %></span>
+  <% else %>
+    <span id="signup_link"><%= link_to 'Sign Up', signup_path %></span>
+    <span id="login_link"><%= link_to 'Log In', login_path %></span>
+  <% end %>
+
+</header>
+
+<div id="notification">
+  <% if flash[:notice] %>
+      <div id="notice"><%= flash[:notice] %></div>
+  <% elsif flash[:alert] %>
+      <div id="alert"><%= flash[:alert] %></div>
+  <% end %>
+</div>
+
+
+<%= yield %>
+
+</body>
+</html>

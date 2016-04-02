@@ -1,0 +1,40 @@
+  <% if @user.errors.any? %>
+  <div id="errors_box">
+    <h3>Please fix the following <%= pluralize(@user.errors.count, 'error')%>:</h3>
+         
+    <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+       
+  <% end %>
+  </div>
+  
+<div class="signup_form_box">
+  <div id="signup_form">
+    <h1 id="signup_h1">Sign Up</h1>
+
+
+    <%= form_for @user do |f| %>
+
+      <%= f.label :name %>:<br />
+      <%= f.text_field :name, :class => 'form_field' %><br /><br />
+
+      <%= f.label :email %>:<br />
+      <%= f.email_field :email, :class => 'form_field' %><br /><br />
+
+      <%= f.label :password %>:<br />
+      <%= f.password_field :password, :class => 'form_field' %><br /><br />
+
+      <%= f.label :password_confirmation %>:<br />
+      <%= f.password_field :password_confirmation, :class => 'form_field' %><br /><br />
+
+      <%= f.submit 'Submit', :class => 'submit_button' %><br /><br />
+
+    <% end %>
+
+    <span>Already Registered? <%= link_to 'Log In', login_path %></span>
+  </div>  
+
+</div>

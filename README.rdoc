@@ -1,0 +1,35 @@
+This simple application allows authenticated users to leave reviews for movies that are currently in theatres. Users can view movies in the 'coming soon' section but they will not be able to leave a review. Authenticated users can create a movie and include a trailer and movie poster. All trailers were taken from www.youtube.com.
+
+You will need to migrate the database and load the seeds file.
+
+The styling for the application was done on a 13" macbook on 100% zoom in chrome. 
+
+List of gems:
+
+  Rails version '4.2.2'
+
+  gem 'bcrypt'
+  # Used on user model to create password
+
+  gem 'better_errors'
+  # Provides a little more information when encountering an error. 
+
+  gem 'quiet_assets'
+  # Remove extra messages from your development log
+
+  gem 'pry'
+  gem 'pry-rails'
+  gem 'pry-doc'
+  gem 'pry-awesome_print'
+  gem 'awesome_print'
+  # This combination of gems makes inspecting inspect objects in your console a lot easier. 
+
+  gem 'will_paginate'
+  # Allow a certain number of posts per page
+
+  gem 'carrierwave'
+  # Allows you to upload files
+
+  gem "mini_magick"
+  # Make different picture sizes
+

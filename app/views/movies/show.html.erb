@@ -1,0 +1,56 @@
+<div id="show_page_container">
+  <span><%= image_tag @movie.poster_url, size: '400x550' %></span>
+
+  <div id="show_page_info">
+    <span id="movie_title"><%= @movie.title + " " %></span> <span>(<%= @movie.release_date.strftime("%Y") %>)</span>
+
+    <% if current_user && @movie.creator == current_user %>
+    <div>
+      <span id="edit_link">(<%= link_to 'Edit', edit_movie_path + " " %> |</span>
+      <span id="delete_link"><%= link_to 'Delete', movie_path, method: :delete, data: { confirm: 'Are you sure?' } %>)</span>
+    </div><br />
+    <% end %>
+
+    <p><i>Created By: <%= link_to @movie.creator.name, user_path(@movie.creator) %></i></p>
+    <p>Release Date: <%= @movie.release_date.strftime("%B %e") %></p>
+    <p>Genre: <%= @movie.genre %></p>
+    <p><%= link_to 'Watch Trailer', @movie.trailer %></p>
+    <p>Directed By: <%= @movie.director %></p>
+    <p>Cast: <%= @movie.actors %></p>
+    <p>Summary: <%= @movie.description %></p>
+  </div>
+
+</div>
+
+  
+<div id="review_wrapper">
+
+  <% if @movie.now_playing %>
+    <% if @reviews.any? %>
+    <span id="review_heading">Reviews:</span>
+    <% if current_user %>  
+      <span id="add_review_heading"><%= link_to 'Add Review', new_movie_review_path(@movie) %></span>
+    <% end %>
+      
+      <% @reviews.each do |review| %>
+        <div id="each_review_container">
+          <span><%= link_to review.reviewer.name, user_path(review.reviewer) %></span>
+          <span id="time"><%= review.created_at.try(:strftime,'%b %d, %Y') %></span>
+          <p>Rating: <%= review.rating %>/10</p>
+          <p><%= review.content %></p>
+        </div>
+      <% end %>
+      <div class="digg_pagination_reviews"><%= will_paginate @reviews %></div>
+    <% else %>
+      <span id="review_message">No Reviews yet!</span>
+      <span id="add_new_review_link"><%= link_to 'Add New Review', new_movie_review_path(@movie) %></span>
+    <% end %>
+  <% else %>
+    <p id="review_message">You will be able to submit a review when the movie releases</p>
+  <% end %>
+
+</div>
+
+
+
+
