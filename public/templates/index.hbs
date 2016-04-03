@@ -1,0 +1,30 @@
+<div id="wrapper">
+  <div id="now_playing_section">
+    <h1 id="now_playing_header">Now Playing</h1>
+        <div id="movie_poster_wrapper">
+          <p id="movie_title_main_page">#</p>
+          <p id="movie_poster">#</p>
+          <p id="movie_poster_release">#</p>
+        </div>
+  </div>
+
+  <span id="coming_soon_section">
+    <h1 id="coming_soon_header">Coming Soon</h1>
+<!--       <% @coming_soon.each do |movie| %>
+        <div id="cs_each_movie"><%= link_to movie.title, movie_path(movie) %> - <%= movie.release_date.strftime('%b %d, %Y') %> </div><br />
+      <% end %> -->
+  </span>
+
+<!-- <div class="digg_pagination"><%= will_paginate @now_playing %></div> -->
+
+</div>
+
+<!-- moment.js -->
+
+<!--       <% @now_playing.each do |movie| %>
+        <div id="movie_poster_wrapper">
+          <p id="movie_title_main_page"><%= movie.title %></p>
+          <p id="movie_poster"><%= link_to image_tag(movie.poster_url, size: '250x250'), movie_path(movie) %></p>
+          <p id="movie_poster_release"><%= movie.release_date.strftime('%b %d, %Y') %></p>
+        </div>
+      <% end %> -->

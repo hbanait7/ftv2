@@ -6,7 +6,8 @@ class MoviesController < ApplicationController
 
   def index
     @now_playing = Movie.paginate(page: params[:page], per_page: 8).all.order('release_date DESC').now_playing
-    @coming_soon = Movie.all.order('created_at DESC').coming_soon
+    render :json => @now_playing
+    # @coming_soon = Movie.all.order('created_at DESC').coming_soon
   end
 
   def show
